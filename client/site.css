@@ -1,0 +1,71 @@
+:root {
+  font-family: Arial, Helvetica, sans-serif;
+  --dark1: black;
+  --dark2: darkblue;
+  --dark3: darkgreen;
+  --light1: white;
+  --light2: lightblue;
+  color: var(--dark1);
+  background-color: var(--light1);
+}
+
+#peopleSection {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+
+  & .card {
+    border: 1px solid var(--dark3);
+    margin: 10px;
+    padding: 4px;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas: 'name' 'image' 'email' 'phone' 'connect';
+
+    & img {
+      grid-area: image;
+      justify-self: center;
+      width: 75%;
+      border-radius: 50%;
+    }
+
+    & .name {
+      grid-area: name;
+      margin: 0;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    & p:nth-of-type(1) {
+      grid-area: email;
+    }
+
+    & p:nth-of-type(2) {
+      grid-area: phone;
+    }
+
+    & p {
+      max-width: 100%;
+      overflow: hidden;
+      overflow-wrap: break-word;
+      font-weight: light;
+      margin: 0;
+
+      &>span {
+        font-weight: bold;
+        margin-right: 10px;
+      }
+    }
+
+    & button {
+      grid-area: connect;
+      justify-self: center;
+      color: var(--dark2);
+      background-color: var(--light2);
+      border: 1px solid blue;
+      width: 80%;
+      text-align: center;
+      border-radius: 20px;
+    }
+  }
+}
