@@ -7,6 +7,11 @@ const app = express();
 
 app.use(express.static("client"));
 
+//GET /api/people
+app.get('/api/people', (req, res) => {
+  res.send("Hello world");
+});
+
 app.listen(3001, () => {
   console.log("Listening for requests on port 3001");
 })
