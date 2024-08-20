@@ -4,9 +4,8 @@ const peopleSection = document.querySelector('#peopleSection')
 async function fetchPeople(numberOfPeople = 25) {
   counter = 1;
 
-  const newPeople = await fetch(`https://randomuser.me/api/?results=${numberOfPeople}`)
+  const newPeople = await fetch(`http://127.0.0.1:3001/api/people`)
     .then(res => res.json())
-    .then(res => res.results)
     .then(ppl => ppl.map(p => ({ ...p, id: counter++ })))
   console.log(newPeople);
 

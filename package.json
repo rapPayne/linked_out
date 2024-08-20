@@ -12,6 +12,10 @@
   "author": "Better cohort",
   "license": "ISC",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.19.2"
+  },
+  "engines": {
+    "node": "^22"
   }
 }

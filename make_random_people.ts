@@ -10,7 +10,7 @@ const allThePeople: [] = await fetch(url)
   .then(people => people.map((p, index) => ({ ...p, id: index + 10 })))
   .catch(err => console.error("Error fetching people", err));
 
-const dbFileName = "./people.json";
+const dbFileName: string = "./people.json";
 
 // If the file exists already, delete it.
 if (fs.existsSync(dbFileName)) {
