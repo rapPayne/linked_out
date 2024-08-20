@@ -9,7 +9,7 @@ async function fetchPeople(numberOfPeople = 25) {
     .then(res => res.results)
     .then(ppl => ppl.map(p => ({ ...p, id: counter++ })))
   console.log(newPeople);
-  return;
+
   people = newPeople;
   drawPeople();
 }
