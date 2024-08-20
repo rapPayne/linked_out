@@ -12,6 +12,7 @@
 #peopleSection {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  max-width: 75%;
 
   & .card {
     border: 1px solid var(--dark3);
@@ -68,4 +69,20 @@
       border-radius: 20px;
     }
   }
+}
+
+#pane {
+  width: 25%;
+}
+
+#flex-div {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+}
+
+img#picture {
+  border-radius: 50%;
 }

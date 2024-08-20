@@ -1,28 +1,33 @@
 let people = [];
+let counter = 1;
 const peopleSection = document.querySelector('#peopleSection')
 
 async function fetchPeople(numberOfPeople = 25) {
-  counter = 1;
 
   const newPeople = await fetch(`https://randomuser.me/api/?results=${numberOfPeople}`)
     .then(res => res.json())
     .then(res => res.results)
     .then(ppl => ppl.map(p => ({ ...p, id: counter++ })))
   console.log(newPeople);
-  return;
-  people = newPeople;
-  drawPeople();
+  const nP = newPeople.map(person => {
+    newPerson = JSON.parse(JSON.stringify(person));
+    newPerson.name = `${person.name.first} ${person.name.last}`;
+    newPerson.age = person.dob.age;
+    newPerson.location = `${person.location.city}, ${person.location.state}, ${person.location.country}`;
+    return newPerson;
+  });
+  people = [...people, ...nP];
+  drawNewPeople(nP);
 }
 
-function drawPeople() {
-  console.log('Drawing', people);
+function drawNewPeople(newPeople) {
   const makePersonString = person => `
-  <section class="card">
-  <h2 class="name">${person.name.first} ${person.name.last}</h2>
+  <section class="card" onclick="changePane(${person.id})">
+  <h2 class="name">${person.name}</h2>
   <img src="${person.picture.large}" alt="${person.name.first}" />
   <p><span>✉️</span>${person.email}</p>
   <p><span>📞</span>${person.phone}</p>
-  <button>Connect</button>
+  <button >Connect</button>
   </section>
   `;
 
@@ -34,9 +39,23 @@ function drawPeople() {
   //   drawPerson(person)
   // }
   // Convert the array of people to an array of HTML strings and then join them into one string.
-  peopleSection.innerHTML = people.map(person => makePersonString(person)).join("");
+  peopleSection.innerHTML += newPeople.map(person => makePersonString(person)).join("");
 }
 
+function changePane(id) {
+  const person = people.find(person => person.id === id);
+  if (person === null) {
+    return;
+  }
+  const pane = document.getElementById("pane");
+  const data = pane.getElementsByTagName("p");
+  for (element of data) {
+      element.innerText = person[element.id];
+  }
+  const picture = pane.getElementsByTagName("img")[0];
+  picture.setAttribute("src", person.picture.large);
+  picture.setAttribute("alt", `Picture of ${person.name}`);
+}
 
 
 // Not used. Just saving for an example.
