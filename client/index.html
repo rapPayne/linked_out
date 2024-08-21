@@ -11,8 +11,26 @@
 
 <body>
   <h1>All the cool peoples</h1>
+  <div id="flex-div">
+    <section id="peopleSection"></section>
+    <section id="pane">
+        <h4>Details:</h4>
+        <img id="picture"/>
+        <div class="sec-2">
+            <span><b>Name:</b></span><p id="name" class="data"></p>
+            <span><b>Age:</b></span><p id="age" class="data"></p>
+        </div>
+        <div class="sec-2">
+            <span><b>Cell:</b></span><p id="cell" class="data"></p>
+            <span><b>Email:</b></span><p id="email" class="data"></p>
+        </div>
+        <div class="sec-2">
+            <span><b>Location:</b></span><p id="location" class="data"></p>
+            <span><b>Gender:</b></span><p id="gender" class="data"></p>
+        </div>
+    </section>
+  </div>
   <button onclick="fetchPeople();">Get people</button>
-  <section id="peopleSection"></section>
 </body>
 
 </html>
