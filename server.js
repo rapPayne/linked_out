@@ -12,13 +12,13 @@ app.use(cors());
 app.use(express.static("client"));
 
 //GET /api/people
-app.get('/api/people', (req, res) => {
-  res.send(getAllPeople());
+app.get('/api/people', async (req, res) => {
+  res.send(await getAllPeople());
 });
 
-app.get('/api/people/:id', (req, res) => {
+app.get('/api/people/:id', async (req, res) => {
   const { id } = req.params;
-  const person = getPerson(id);
+  const person = await getPerson(id);
   console.log("thePerson: ", person)
   if (person !== undefined)
     res.send(person);
@@ -27,14 +27,14 @@ app.get('/api/people/:id', (req, res) => {
 });
 
 //TODO: move try/catch to the repository
-app.delete('/api/people/:id/', (req, res) => {
+app.delete('/api/people/:id/', async (req, res) => {
   const { id } = req.params;
   try {
-    let thePerson = getPerson(+id);
+    let thePerson = await getPerson(+id);
     if (!thePerson) {
       res.status(404).send(`The user with id ${id} isn't available`);
     } else {
-      deletePerson(id);
+      await deletePerson(id);
       res.sendStatus(204);
     }
   }

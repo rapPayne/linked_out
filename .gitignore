@@ -1,6 +1,7 @@
 # Local
 people.json
-
+data/
+compass_demo
 # Logs
 logs
 *.log

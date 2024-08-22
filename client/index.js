@@ -17,10 +17,10 @@ function drawPeople() {
   console.log('Drawing', people);
   const makePersonString = person => `
   <section class="card">
-  <h2 class="name">${person.name.first} ${person.name.last}</h2>
-  <img src="${person.picture.large}" alt="${person.name.first}" />
+  <h2 class="name">${person.name?.first} ${person.name?.last}</h2>
+  <img src="${person.picture?.large}" alt="${person.name?.first}" />
   <p><span>✉️</span>${person.email}</p>
-  <p><span>📞</span>${person.phone}</p>
+  <p><span>📞</span>${person.cell}</p>
   <button>Connect</button>
   </section>
   `;
