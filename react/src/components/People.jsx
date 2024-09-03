@@ -1,17 +1,30 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Person } from './Person';
+import { PersonDetails } from './PersonDetails';
+import './People.css';
 
 export function People() {
   const [people, setPeople] = useState([]);
+  const [selectedPerson, setSelectedPerson] = useState();
 
+  useEffect(() => {
+    fetchPeople()
+  }, []);
   return (
-    <>
-      <h1>All the cool peoples</h1>
-      <button onClick={() => fetchPeople()}>Get people</button>
-      <section id="peopleSection">
-        {people.map(p => <Person person={p} key={p.id} />)}
-      </section>
-    </>
+    <section className='People'>
+      <div>
+        <h1>All the cool peoples</h1>
+        <section id="peopleSection">
+          {people
+            .map(p => <Person person={p} key={p.id} selectPerson={setSelectedPerson} />)}
+        </section>
+      </div>
+      {selectedPerson &&
+        <section id="personDetails">
+          <PersonDetails person={selectedPerson} />
+        </section>
+      }
+    </section>
   )
 
   async function fetchPeople() {
@@ -20,6 +33,6 @@ export function People() {
       .then(res => res.json())
       .then(ppl => ppl.map(p => ({ ...p, id: counter++ })))
     console.log(newPeople);
-    setPeople(newPeople);
+    setPeople(newPeople.toSorted(() => Math.random() > 0.5 ? 1 : -1));
   }
 }

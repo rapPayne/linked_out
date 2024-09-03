@@ -6,7 +6,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node --watch server.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "node --experimental-vm-modules ./node_modules/.bin/jest --watch",
     "load-db": "node --experimental-strip-types make_random_people.ts"
   },
   "author": "Better cohort",
@@ -18,5 +18,8 @@
   },
   "engines": {
     "node": "^22"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
   }
 }

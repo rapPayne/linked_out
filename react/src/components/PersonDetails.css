@@ -1,0 +1,15 @@
+.PersonDetails {
+  .nameAndImage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    img {
+      width: min(300px, 95%);
+      border-radius: 10px;
+      text-align: center;
+      margin: 0 auto;
+    }
+  }
+
+}

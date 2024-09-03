@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types */
 
-export const Person = ({ person }) => {
+export const Person = ({ person, selectPerson }) => {
   return (
-    <section className="card">
+    <section className="card" onClick={() => selectPerson(person)}>
       <h2 className="name">{person.name?.first} {person.name?.last}</h2>
       <img src={person.picture?.large} alt={person.name?.first} />
       <p><span>✉️</span>{person.email}</p>

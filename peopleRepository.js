@@ -16,4 +16,6 @@ function deletePerson(id) {
   fs.writeFileSync(databaseFile, JSON.stringify(thePeople));
 }
 
-export default peopleRepository = { getAllPeople, getPerson, deletePerson }
+
+const peopleRepository = { getAllPeople, getPerson, deletePerson }
+export default peopleRepository;
